@@ -6,9 +6,9 @@ const BackBtn = () => {
 	const comeback =
 		location.state && location.state.from ? location.state.from : '/';
 	return (
-		<div>
+		<div className="block flex justify-end mb-4">
 			<Link
-				className="font-mono border-2 absolute bottom-4 border-slate-100 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 transition-colors duration-300 px-4"
+				className="font-mono text-xl font-bold text-slate-700 border-2  bottom-4 border-slate-100 py-4 rounded-2xl bg-slate-100 hover:bg-slate-200 transition-colors duration-300 px-8"
 				to={comeback}
 			>
 				Go back

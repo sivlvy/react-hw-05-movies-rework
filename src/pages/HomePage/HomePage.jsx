@@ -18,7 +18,9 @@ const HomePage = () => {
 		fetchMovies();
 	}, []);
 
-	return <MovieList movies={popularMovies} />;
+	return (
+		<MovieList page="home" movies={popularMovies} MoviePageBoolean={true} />
+	);
 };
 
 export default HomePage;

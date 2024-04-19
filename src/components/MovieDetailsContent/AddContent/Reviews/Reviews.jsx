@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import STATUS from 'services/config';
-import { getReviews } from 'services/services';
-import Loader from 'components/Loader/Loader';
 import { useParams } from 'react-router-dom';
+import { Notify } from 'notiflix';
+
+import Loader from 'components/Loader/Loader';
 import ReviewsList from './ReviewsList';
+
+import { getReviews } from 'services/services';
+import STATUS from 'services/config';
+
 const Reviews = () => {
-	const [status, setStatus] = useState(STATUS.IDLE);
+	const [status, setStatus] = useState(STATUS.PENDING);
 	const [review, setReview] = useState([]);
 
 	const { movieId } = useParams();
 	useEffect(() => {
 		const fetchReviews = async () => {
-			setStatus(STATUS.PENDING);
-
 			try {
 				const response = await getReviews(movieId);
 				setReview(response);
 				setStatus(STATUS.RESOLVED);
-			} catch (err) {
-				console.log(err.message);
+			} catch {
+				setStatus(STATUS.REJECTED);
+				Notify.failure('Sorry! Reviews not found');
 			}
 		};
 		fetchReviews();
@@ -27,6 +30,9 @@ const Reviews = () => {
 		<>
 			{status === STATUS.PENDING && <Loader />}
 			{status === STATUS.RESOLVED && <ReviewsList data={review} />}
+			{status === STATUS.REJECTED && (
+				<div>We don't have any reviews for this movie</div>
+			)}
 		</>
 	);
 };

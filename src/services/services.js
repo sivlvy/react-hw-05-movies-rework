@@ -28,15 +28,12 @@ export const getPopularMovies = async () => {
 };
 
 export const searchMovie = async query => {
-	const { data } = await axios.get(
-		`${END_POINTS.SEARCH}?api_key=${API_KEY}&query=${query}`,
-		{
-			...options,
-			params: { query },
-		}
-	);
+	const { data } = await axios.get(`/search/movie?api_key=${API_KEY}`, {
+		...options,
+		params: { query },
+	});
 
-	return data;
+	return data.results;
 };
 
 export const getDetails = async movieId => {
