@@ -18,10 +18,12 @@ const Reviews = () => {
 			try {
 				const response = await getReviews(movieId);
 				setReview(response);
+				if (!response.length) {
+					Notify.failure('Sorry! Reviews not found');
+				}
 				setStatus(STATUS.RESOLVED);
 			} catch {
 				setStatus(STATUS.REJECTED);
-				Notify.failure('Sorry! Reviews not found');
 			}
 		};
 		fetchReviews();

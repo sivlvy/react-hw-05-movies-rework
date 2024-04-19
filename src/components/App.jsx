@@ -1,9 +1,10 @@
+import { Route, Routes } from 'react-router-dom';
+
 import SharedLayout from './SharedLayout/SharedLayout';
 import MoviesPage from '../pages/MoviesPage/MoviesPage';
 import HomePage from 'pages/HomePage/HomePage';
 import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import Error from './Error/Error';
-import { Route, Navigate, Routes } from 'react-router-dom';
 import CastContent from './MovieDetailsContent/AddContent/Cast/Cast';
 import Reviews from './MovieDetailsContent/AddContent/Reviews/Reviews';
 export const App = () => {

@@ -1,8 +1,6 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
-	const { pathname } = useLocation();
-
 	return (
 		<nav className="flex gap-6 justify-center border-b-2 bg-slate-200 border-slate-200 px-auto font-bold text-xl py-4 text-center shadow-lg mb-10 font-mono items-center">
 			<NavLink

@@ -1,6 +1,5 @@
 const CastList = ({ actors }) => {
 	const BASE_IMG = 'https://image.tmdb.org/t/p/w500';
-	console.log(actors);
 	return (
 		<ul className="border-2 border-slate-200 justify-center py-4 flex flex-wrap gap-6 bg-slate-200 rounded-md shadow-lg  mb-10 mt-10">
 			{actors?.map(({ profile_path, credit_id, character, name }) => {
